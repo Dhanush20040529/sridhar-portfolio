@@ -1,13 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from 'react';
+import Preloader from '@/components/Preloader';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Portfolio from '@/components/Portfolio';
+import Services from '@/components/Services';
+import Testimonials from '@/components/Testimonials';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    // Add smooth scroll behavior
+    document.documentElement.classList.add('smooth-scroll');
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <>
+      <Preloader />
+      <div className="min-h-screen">
+        <Hero />
+        <About />
+        <Portfolio />
+        <Services />
+        <Testimonials />
+        <Contact />
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
