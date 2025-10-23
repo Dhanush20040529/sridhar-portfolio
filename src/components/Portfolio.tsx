@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { X, Play } from 'lucide-react';
 
 const portfolioItems = [
-  { id: 1, type: 'image', url: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000', title: 'Landscape Photography' },
-  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000', title: 'Portrait Session' },
-  { id: 3, type: 'video', url: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000', title: 'Cinematic Video' },
-  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000', title: 'Product Photography' },
-  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000', title: 'Street Photography' },
-  { id: 6, type: 'image', url: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1000', title: 'Nature Photography' },
+  { id: 1, type: 'image', url: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000', title: 'Landscape Photography' },
+  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000', title: 'Portrait Session' },
+  { id: 3, type: 'video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', thumbnail: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000', title: 'Cinematic Video' },
+  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000', title: 'Product Photography' },
+  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000', title: 'Street Photography' },
+  { id: 6, type: 'image', url: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1000', title: 'Nature Photography' },
 ];
 
 const Portfolio = () => {
@@ -43,7 +43,7 @@ const Portfolio = () => {
               onClick={() => openLightbox(item)}
             >
               <img
-                src={item.url}
+                src={item.thumbnail}
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -73,11 +73,20 @@ const Portfolio = () => {
             <X className="h-8 w-8" />
           </button>
           <div className="max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={lightbox.item.url}
-              alt={lightbox.item.title}
-              className="w-full h-auto rounded-lg"
-            />
+            {lightbox.item.type === 'video' ? (
+              <video
+                src={lightbox.item.url}
+                controls
+                autoPlay
+                className="w-full h-auto rounded-lg"
+              />
+            ) : (
+              <img
+                src={lightbox.item.url}
+                alt={lightbox.item.title}
+                className="w-full h-auto rounded-lg"
+              />
+            )}
             <p className="text-white text-center mt-4 text-xl font-heading">
               {lightbox.item.title}
             </p>
