@@ -1,7 +1,7 @@
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import sridharImg from '../images/sridhar-img.jpg'
-import cv from '../../public/cv.pdf'
+
 
 const About = () => {
 
@@ -27,7 +27,7 @@ const About = () => {
           <div className="slide-up">
             <h2 className="text-5xl font-heading mb-6">About Me</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              Hello! I'm Sridhar, a passionate photographer and video editor with over 8 years of experience 
+              Hello! I'm Sridhar, a passionate photographer and video editor with over 2 years of experience 
               in visual storytelling. My journey began with a simple camera and an endless curiosity about 
               the world around me.
             </p>

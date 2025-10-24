@@ -178,11 +178,11 @@ const Contact = () => {
               <h3 className="text-2xl font-heading mb-6">Connect With Me</h3>
               <div className="space-y-4">
                 <a
-                  href="mailto:sridhar.aofficialv@gmail.com"
+                  href="mailto:sridhar.officialworks@gmail.com"
                   className="flex items-center text-muted-foreground hover:text-accent transition-colors"
                 >
                   <Mail className="mr-3 h-5 w-5" />
-                  sridhar.aofficialv@gmail.com
+                  sridhar.officialworks@gmail.com
                 </a>
                 <a
                   href="tel:+919876543210"
