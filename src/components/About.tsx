@@ -1,16 +1,26 @@
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import sridharImg from '../images/sridhar-img.jpg'
+import cv from '../../public/cv.pdf'
 
 const About = () => {
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '../../public/cv.pdf'; // Path in public folder
+    link.download = 'Sridhar_Resume.pdf'; // File name for download
+    link.click();
+  };
+
   return (
     <section id="about" className="py-20 px-4 bg-secondary">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="slide-up">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000"
+              src={sridharImg}
               alt="Sridhar"
-              className="rounded-lg shadow-2xl w-full object-cover h-[500px]"
+              className="rounded-lg shadow-2xl w-90 object-cover h-[500px]"
             />
           </div>
           
@@ -30,7 +40,10 @@ const About = () => {
                 "Photography is the art of frozen time... the ability to store emotion and feelings within a frame."
               </p>
             </div>
-            <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold">
+            <Button 
+              className="bg-accent hover:bg-accent/90 text-primary font-semibold"
+              onClick={handleDownload}
+            >
               <Download className="mr-2 h-4 w-4" />
               Download Resume
             </Button>

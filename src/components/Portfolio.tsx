@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import { X, Play } from 'lucide-react';
+import image1 from '../images/img1.jpg'
+import image2 from '../images/img2.jpg'
+import image3 from '../images/img3.jpg'
+import image4 from '../images/img4.jpg'
+import image5 from '../images/img5.jpg'
+import image6 from '../images/img6.jpg'
+import video from '../videos/video1.mp4'
+import thumbnail from '../images/thumbnail.jpg'
 
 const portfolioItems = [
-  { id: 1, type: 'image', url: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000', title: 'Landscape Photography' },
-  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000', title: 'Portrait Session' },
-  { id: 3, type: 'video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', thumbnail: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000', title: 'Cinematic Video' },
-  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000', title: 'Product Photography' },
-  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000', title: 'Street Photography' },
-  { id: 6, type: 'image', url: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1000', thumbnail: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1000', title: 'Nature Photography' },
+  { id: 1, type: 'image', url: image1, thumbnail: image1 },
+  { id: 2, type: 'image', url: image2, thumbnail: image2 },
+  { id: 3, type: 'video', url: video, thumbnail: thumbnail },
+  { id: 4, type: 'image', url: image3, thumbnail: image3 },
+  { id: 5, type: 'image', url: image4, thumbnail: image4 },
+  { id: 6, type: 'image', url: image6, thumbnail: image6 },
 ];
 
 const Portfolio = () => {
@@ -44,16 +52,14 @@ const Portfolio = () => {
             >
               <img
                 src={item.thumbnail}
-                alt={item.title}
+              
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 {item.type === 'video' && (
                   <Play className="h-16 w-16 text-accent" />
                 )}
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="text-xl font-heading">{item.title}</h3>
-                </div>
+                
               </div>
             </div>
           ))}
@@ -72,23 +78,23 @@ const Portfolio = () => {
           >
             <X className="h-8 w-8" />
           </button>
-          <div className="max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="max-w-md w-full" onClick={(e) => e.stopPropagation()}>
             {lightbox.item.type === 'video' ? (
               <video
                 src={lightbox.item.url}
                 controls
                 autoPlay
-                className="w-full h-auto rounded-lg"
+                className="w-80 h-auto rounded-lg place-self-center"
               />
             ) : (
               <img
                 src={lightbox.item.url}
-                alt={lightbox.item.title}
-                className="w-full h-auto rounded-lg"
+              
+                className="w-full h-auto rounded-lg object-contain"
               />
             )}
             <p className="text-white text-center mt-4 text-xl font-heading">
-              {lightbox.item.title}
+             
             </p>
           </div>
         </div>

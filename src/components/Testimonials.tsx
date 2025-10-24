@@ -2,20 +2,15 @@ import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "Sridhar's ability to capture emotion in every frame is unparalleled. His work transformed our brand's visual identity.",
-    name: 'Priya Sharma',
-    role: 'Marketing Director',
+    quote: "you’ve captured a genuine, joyful moment with such perfect timing and warmth. The lighting, composition, and natural expressions make it feel so alive and effortless — truly an impressive piece of photography!",
+    name: 'Adhithi Aravind',
+    role: 'influencer',
   },
   {
-    quote: 'The cinematic quality of his video editing brought our wedding memories to life. We watch it every anniversary!',
+    quote: 'The cinematic quality of his video editing transformed our wedding footage into a timeless film. Every detail — the emotions, the music, the moments we almost forgot — came alive so beautifully.',
     name: 'Rahul & Ananya',
     role: 'Happy Couple',
-  },
-  {
-    quote: 'Professional, creative, and delivers beyond expectations. His drone footage gave our project a unique perspective.',
-    name: 'Vikram Reddy',
-    role: 'Real Estate Developer',
-  },
+  }
 ];
 
 const Testimonials = () => {
@@ -29,7 +24,7 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}

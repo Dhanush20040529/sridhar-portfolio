@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -12,8 +13,14 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [emailjsConfig, setEmailjsConfig] = useState({
+    serviceId: 'service_5pjdlec',
+    templateId: 'template_gyuwesm',
+    publicKey: 'mYua5chbA4WjmCQiB',
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation
@@ -44,13 +51,46 @@ const Contact = () => {
       return;
     }
 
-    // Success
-    toast({
-      title: 'Message Sent!',
-      description: 'Thank you for reaching out. I\'ll get back to you soon.',
-    });
-    
-    setFormData({ name: '', email: '', message: '' });
+    if (!emailjsConfig.serviceId.trim() || !emailjsConfig.templateId.trim() || !emailjsConfig.publicKey.trim()) {
+      toast({
+        title: 'Error',
+        description: 'Please enter your EmailJS credentials',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'your-email@example.com', // Configure this
+        },
+        emailjsConfig.publicKey
+      );
+
+      toast({
+        title: 'Message Sent!',
+        description: 'Your message has been sent successfully via EmailJS.',
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error sending via EmailJS:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please check your EmailJS credentials and try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -72,6 +112,8 @@ const Contact = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="bg-background"
+                  disabled={isLoading}
+                  name='from_name"'
                 />
               </div>
               <div>
@@ -81,6 +123,8 @@ const Contact = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="bg-background"
+                  disabled={isLoading}
+                  name='from_email'
                 />
               </div>
               <div>
@@ -90,14 +134,41 @@ const Contact = () => {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={6}
                   className="bg-background"
+                  disabled={isLoading}
+                  name='message'
                 />
               </div>
+             {/*  <div className="space-y-3 pt-2">
+                <p className="text-sm text-muted-foreground">EmailJS Configuration:</p>
+                <Input
+                  placeholder="Service ID"
+                  value={emailjsConfig.serviceId}
+                  onChange={(e) => setEmailjsConfig({ ...emailjsConfig, serviceId: e.target.value })}
+                  className="bg-background"
+                  disabled={isLoading}
+                />
+                <Input
+                  placeholder="Template ID"
+                  value={emailjsConfig.templateId}
+                  onChange={(e) => setEmailjsConfig({ ...emailjsConfig, templateId: e.target.value })}
+                  className="bg-background"
+                  disabled={isLoading}
+                />
+                <Input
+                  placeholder="Public Key"
+                  value={emailjsConfig.publicKey}
+                  onChange={(e) => setEmailjsConfig({ ...emailjsConfig, publicKey: e.target.value })}
+                  className="bg-background"
+                  disabled={isLoading}
+                />
+              </div> */}
               <Button
                 type="submit"
                 size="lg"
                 className="w-full bg-accent hover:bg-accent/90 text-primary font-semibold"
+                disabled={isLoading}
               >
-                Send Message
+                {isLoading ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </div>
