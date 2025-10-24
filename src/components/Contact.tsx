@@ -178,22 +178,22 @@ const Contact = () => {
               <h3 className="text-2xl font-heading mb-6">Connect With Me</h3>
               <div className="space-y-4">
                 <a
-                  href="mailto:contact@sridhar.com"
+                  href="mailto:sridhar.aofficialv@gmail.com"
                   className="flex items-center text-muted-foreground hover:text-accent transition-colors"
                 >
                   <Mail className="mr-3 h-5 w-5" />
-                  contact@sridhar.com
+                  sridhar.aofficialv@gmail.com
                 </a>
                 <a
                   href="tel:+919876543210"
                   className="flex items-center text-muted-foreground hover:text-accent transition-colors"
                 >
                   <Phone className="mr-3 h-5 w-5" />
-                  +91 98765 43210
+                  +91 80565 40494
                 </a>
                 <div className="flex items-center text-muted-foreground">
                   <MapPin className="mr-3 h-5 w-5" />
-                  Bangalore, India
+                  Chennai, India
                 </div>
               </div>
             </div>
@@ -202,14 +202,14 @@ const Contact = () => {
               <h3 className="text-2xl font-heading mb-6">Social Media</h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/lazy_clicks.20?igsh=MXNveDJlN3dkZzNhMQ== "
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-background rounded-full hover:bg-accent hover:text-primary transition-all"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
-                <a
+                {/* <a
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -224,7 +224,7 @@ const Contact = () => {
                   className="p-3 bg-background rounded-full hover:bg-accent hover:text-primary transition-all"
                 >
                   <Palette className="h-6 w-6" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
